@@ -94,7 +94,7 @@ __________________________
 4. **Запуск**:  
    - Запустить можно обычным образом:
    ```bash
-   docker-compose -f docker-compose.networks.yml -f docker-compose.firefly.yml -f docker-compose.mailu.yml \
+   docker compose -f docker-compose.networks.yml -f docker-compose.firefly.yml -f docker-compose.mailu.yml \
                   -f docker-compose.nextcloud.yml -f docker-compose.nginx-rp.yml -f docker-compose.ryot.yml \
                   -f docker-compose.wireguard.yml up -d
    ```
