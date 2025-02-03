@@ -23,7 +23,7 @@ __________________________
 ├── docker-compose.nginx-rp.yml
 ├── docker-compose.ryot.yml
 ├── docker-compose.wireguard.yml
-├── env
+├── env                                # Файлы с переменными окружений
 │   ├── firefly-app.env
 │   ├── firefly-mariadb.env
 │   ├── mailu.env
@@ -32,10 +32,8 @@ __________________________
 │   ├── ryot-app.env
 │   ├── ryot-postgres.env
 │   └── wireguard.env
-├── LICENSE
-├── README.md
-├── services-data
-│   ├── nginx-rp
+├── services-data                      # Директория с данными сервисов
+│   └── nginx-rp                       # Директория с конфиками nginx, который используется как реверс прокси
 │       ├── nginx.conf
 │       ├── sites-available
 │       └── sites-enabled
@@ -45,7 +43,7 @@ __________________________
 │           ├── nextcloud.conf.template
 │           ├── ryot.conf.template
 │           └── wireguard.conf.template
-└── ssl-certificates
+└── ssl-certificates                   # SSL сертификаты
     ├── mailu
     └── nginx-rp
 
@@ -54,12 +52,12 @@ __________________________
 Дополнительно в `services-data` будут созданы директории под каждый сервис:
 
 ```
-├── services-data
-│   ├── firefly
-│   ├── mailu
-│   ├── nextcloud
-│   ├── ryot
-│   └── wireguard
+└── services-data
+    ├── firefly
+    ├── mailu
+    ├── nextcloud
+    ├── ryot
+    └── wireguard
 ```
 
 ---
