@@ -1,6 +1,6 @@
 #!/bin/bash
 
-compose_files=($(ls | grep -E 'docker-compose.*.yml'))
+compose_files=($(ls | grep -E 'docker-compose.*.yml')) 
 
 function select_services {
   while true; do
