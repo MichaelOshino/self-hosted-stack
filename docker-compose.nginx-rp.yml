@@ -1,0 +1,16 @@
+services:
+  nginx-rp:
+    image: nginx:alpine
+    env_file:
+      - ./env/nginx-rp.env
+    volumes:
+      - ./ssl-certificates/nginx-rp:/etc/nginx/ssl:ro
+      - ./services-data/nginx-rp/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./services-data/nginx-rp/sites-enabled:/etc/nginx/templates:ro
+
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    networks:
+       - nginx-proxy

@@ -1,0 +1,46 @@
+networks:
+  nginx-proxy:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/24
+
+  mailu-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.0/24
+  radicale:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.23.0.0/24
+  webmail:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.24.0.0/24
+  oletools:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.25.0.0/24
+
+  nextcloud-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.26.0.0/24
+
+  firefly-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.27.0.0/24
+
+  ryot-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24

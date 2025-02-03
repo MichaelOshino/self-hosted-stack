@@ -1,0 +1,10 @@
+server {
+	listen 80 default_server;
+	listen 443 ssl default_server;
+	server_name _;
+
+    ssl_certificate ${WEBSITE_SSL_CRT};
+    ssl_certificate_key ${WEBSITE_SSL_KEY};
+
+	return 444;
+}

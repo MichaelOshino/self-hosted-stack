@@ -1,0 +1,26 @@
+services:
+  ryot-app:
+    image: ignisda/ryot:v7
+    env_file: ./env/ryot-app.env
+    restart: unless-stopped
+    depends_on:
+      ryot-postgres:
+        condition: service_healthy
+    networks:
+      - nginx-proxy
+      - ryot-network
+
+  ryot-postgres:
+    image: postgres:16-alpine
+    volumes:
+      - ./services-data/ryot/postgres_storage:/var/lib/postgresql/data
+    env_file: ./env/ryot-postgres.env
+    restart: unless-stopped
+    networks:
+      - ryot-network
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "localhost", "-p", "5432", "-U", "postgres"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+      timeout: 5s

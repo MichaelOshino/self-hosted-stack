@@ -1,0 +1,31 @@
+services:
+  nextcloud-app:
+    image: nextcloud
+    env_file:
+      - ./env/nextcloud.env
+    volumes:
+      - ./services-data/nextcloud/nextcloud_data:/var/www/html
+    restart: unless-stopped
+    depends_on:
+      nextcloud-mariadb:
+        condition: service_healthy
+    networks:
+      - nginx-proxy
+      - nextcloud-network
+      
+  nextcloud-mariadb:
+    image: mariadb:lts
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    env_file:
+      - ./env/nextcloud.env
+    volumes:
+      - ./services-data/nextcloud/mariadb:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - nextcloud-network
+    healthcheck:
+      test: ["CMD", "bash", "-c", "ss -lntup | grep :3306 || exit 1"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+      timeout: 10s
