@@ -1,7 +1,3 @@
-#env
-#ssl-certificates
+env
+ssl-certificates
 
-docker-compose.website.yml
-env/website.env
-services-data/website
-services-data/nginx-rp/sites-enabled/website.conf.template
