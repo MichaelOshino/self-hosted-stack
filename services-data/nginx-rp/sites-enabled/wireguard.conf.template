@@ -14,7 +14,7 @@ server{
   ssl_certificate_key ${WIREGUARD_SSL_KEY};
 
   location / {
-    proxy_pass http://wireguard:${WIREGUARD_PORT}$request_uri;
+    proxy_pass http://wireguard:51821$request_uri;
 
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-Host $http_host;

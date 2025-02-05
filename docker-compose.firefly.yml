@@ -37,6 +37,6 @@ services:
     #
     image: alpine
     restart: unless-stopped
-    command: sh -c "echo \"0 3 * * * wget -qO- http://firefly-app:8080/api/v1/cron/nKN1D8uY2FJKgWpXLWcy96h6hMQf0azN\" | crontab - && crond -f -L /dev/stdout"
+    command: sh -c "echo \"0 3 * * * wget -qO- http://firefly-app:8080/api/v1/cron/b7f8e2d9c3a1f4b6d0e7a8c5f2b9d6e1\" | crontab - && crond -f -L /dev/stdout"
     networks:
       - firefly-network
