@@ -3,6 +3,7 @@ services:
     image: nginx:alpine
     env_file:
       - ./env/nginx-rp.env
+      - ./env/nginx-rp-extra.env
     volumes:
       - ./ssl-certificates/nginx-rp:/etc/nginx/ssl:ro
       - ./services-data/nginx-rp/nginx.conf:/etc/nginx/nginx.conf:ro
