@@ -92,10 +92,12 @@ __________________________
          ```
          WG_HOST= #Опционально
          PASSWORD_HASH= #Сгенерировать пароль потребуется по инструкции: https://github.com/wg-easy/wg-easy/blob/master/How_to_generate_an_bcrypt_hash.md
-
          ```
      
 4. **Запуск**:  
+
+   **При первом запуске может потребоваться несколько минут.**
+
    - Запустить можно обычным образом:
    ```bash
    docker compose -f docker-compose.networks.yml -f docker-compose.firefly.yml -f docker-compose.mailu.yml \
@@ -107,7 +109,7 @@ __________________________
    chmod +x docker-compose-manager.sh
    ./docker-compose-manager.sh
    ```
-   **При первом запуске может потребоваться несколько минут**
+
 ---
 
 ## Ключевые особенности
