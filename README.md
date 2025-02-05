@@ -116,6 +116,7 @@ __________________________
          MAIL_FROM=
          MAIL_USERNAME=
          MAIL_PASSWORD=
+         MAIL_ENCRYPTION=
          ```
       - `mailu.env`:
          ```
@@ -167,7 +168,7 @@ __________________________
    chmod +x docker-compose-manager.sh
    ./docker-compose-manager.sh
    ```
-
+   **При первом запуске может потребоваться несколько минут**
 ---
 
 ## Лицензия
