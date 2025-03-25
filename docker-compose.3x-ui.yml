@@ -1,0 +1,11 @@
+services:
+  3x-ui:
+    image:  ghcr.io/mhsanaei/3x-ui:latest
+    restart: unless-stopped 
+    volumes:
+      - ./services-data/3x-ui/db/:/etc/x-ui/
+      - ./ssl-certificates/3x-ui:/root/cert/
+    networks:
+      - nginx-proxy
+   
+  

@@ -5,7 +5,8 @@
 [Mailu](https://github.com/Mailu/Mailu) - почта;  
 [Nextcloud](https://github.com/nextcloud/docker) - облако;   
 [Ryot](https://github.com/IgnisDa/ryot) - трекер для отслеживания всякого, от дневника тренировок до просмотренных анимок;  
-[WG-Easy](https://github.com/wg-easy/wg-easy) - VPN wireguard.
+[WG-Easy](https://github.com/wg-easy/wg-easy) - VPN wireguard;  
+[3x-ui](https://github.com/MHSanaei/3x-ui) - Веб-панель 3x-ui на базе Xray-core (прокси сервер).  
 
 __________________________
 
@@ -16,10 +17,10 @@ __________________________
    git clone https://github.com/MichaelOshino/self-hosted-stack.git
    cd self-hosted-stack
    ```
-2. **SSL-сертификаты (опционально)**:
-   - Изначально имеется самоподписанный сертификат. Можно оставить его либо для локального использования, либо тестирования, но для корректной работы mailu по TLS требуется валидный сертификат.  
+2. **SSL-сертификаты**:
+   - Изначально имеется самоподписанный сертификат. Можно оставить его либо для локального использования, либо тестирования, но для корректной работы mailu по TLS требуется валидный сертификат, а так же для работы 3x-ui настоятельно рекомендуется валидный сертификат.
    
-   - Сгенерируйте SSL-сертификат или приобритите, а затем поместите сертификат и его ключ в директорию: `ssl-сertificates`
+   - Сгенерируйте SSL-сертификат или приобритите, а затем поместите сертификат и его ключ в директорию: `ssl-сertificates`. Если создадите собственные директории, то измените пути в конфигах.
 
 3. **Настройте переменные окружения**:
    - Каждый файл окружения относится к конкретному сервису, и изменение значений в этих файлах влияет на соответствующие сервисы в проекте.
@@ -29,7 +30,7 @@ __________________________
       - `nginx-rp.env` - для настройки nginx revers proxy:
          - Требуется указать домен/поддомен для каждого сервиса, если домена нет, то укажите IPv4 сервера.
 
-         - И, если имеется валидный SSL сертификат, замените уже укзанный самоподписанный сертикиат на него.
+         - И, если имеется валидный SSL сертификат, замените уже указанный самоподписанный сертикиат на него.
       - `firefly-mariadb.env`:
          ```
          MYSQL_USER=        #Пользователь  
@@ -119,7 +120,11 @@ __________________________
 [Mailu](https://mailu.io/2024.06/);  
 [NextCloud](https://docs.nextcloud.com/server/latest/admin_manual/contents.html);  
 [Ryot](https://docs.ryot.io/);     
-[WG-Easy](https://github.com/wg-easy/wg-easy).  
+[WG-Easy](https://github.com/wg-easy/wg-easy);  
+
+Nginx для 3x-ui настроен для работы через websocket с ssl сертификатами. При создании подключения в 3x-ui достаточно выбрать для websocket путь вида: /ws/порт_подключения_из_3x-ui  
+Документация [3x-ui](https://github.com/MHSanaei/3x-ui);  
+Документация [Xray-core](https://xtls.github.io/);
 
 ---
 
@@ -127,6 +132,7 @@ __________________________
 
 ```
 .
+├── docker-compose.3x-ui.yml
 ├── docker-compose.firefly.yml
 ├── docker-compose.mailu.yml
 ├── docker-compose-manager.sh
@@ -136,6 +142,7 @@ __________________________
 ├── docker-compose.ryot.yml
 ├── docker-compose.wireguard.yml
 ├── env                                # Файлы с переменными окружений
+│   ├── 3x-ui.env
 │   ├── firefly-app.env
 │   ├── firefly-mariadb.env
 │   ├── mailu.env
@@ -149,6 +156,7 @@ __________________________
 │       ├── nginx.conf
 │       ├── sites-available
 │       └── sites-enabled
+│           ├── 3x-ui.conf.template
 │           ├── default.conf.template
 │           ├── firefly.conf.template
 │           ├── mailu.conf.template
@@ -156,6 +164,7 @@ __________________________
 │           ├── ryot.conf.template
 │           └── wireguard.conf.template
 └── ssl-certificates                   # SSL сертификаты
+    ├── 3x-ui
     ├── mailu
     └── nginx-rp
 
@@ -165,6 +174,7 @@ __________________________
 
 ```
 └── services-data
+    ├── 3x-ui
     ├── firefly
     ├── mailu
     ├── nextcloud

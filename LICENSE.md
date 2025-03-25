@@ -14,3 +14,4 @@ Copyright (c) 2025 MichaelOshino
 3. [Nextcloud](https://github.com/nextcloud/docker) - https://github.com/nextcloud/docker/blob/master/LICENSE.md
 4. [Ryot](https://github.com/IgnisDa/ryot) - https://github.com/IgnisDa/ryot/blob/main/LICENSE
 5. [WG-Easy](https://github.com/wg-easy/wg-easy) - https://github.com/wg-easy/wg-easy/blob/master/LICENSE
+6. [3x-ui](https://github.com/MHSanaei/3x-ui) - https://github.com/MHSanaei/3x-ui/blob/main/LICENSE
