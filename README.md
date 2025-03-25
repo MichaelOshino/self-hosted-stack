@@ -99,7 +99,9 @@ __________________________
 
    **При первом запуске может потребоваться несколько минут.**
 
-   - Запустить можно обычным образом:
+   - Можно запустить как все сервисы сразу, так и только nginx + необходимые.
+
+   - Запуск обычным образом:
    ```bash
    docker compose -f docker-compose.networks.yml -f docker-compose.firefly.yml -f docker-compose.mailu.yml \
                   -f docker-compose.nextcloud.yml -f docker-compose.nginx-rp.yml -f docker-compose.ryot.yml \
