@@ -49,7 +49,7 @@ server{
   }
 
   location ~* ^/ws/(\d+)$ {
-    set $target_port $2;
+    set $target_port $1;
     proxy_pass http://3x-ui:$target_port;
 
     proxy_set_header Upgrade websocket;
