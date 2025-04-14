@@ -38,7 +38,6 @@ services:
 
     volumes:
       - ./ssl-certificates/mailu:/certs:ro
-      - ./ssl-certificates/mailu:/certs:ro
       - ./services-data/mailu/overrides/nginx:/overrides:ro
 
   admin:
